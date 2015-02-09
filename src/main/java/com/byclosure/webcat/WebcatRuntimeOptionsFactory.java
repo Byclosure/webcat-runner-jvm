@@ -1,4 +1,4 @@
-package cucumber.examples.java.calculator;
+package com.byclosure.webcat;
 
 import cucumber.api.CucumberOptions;
 import cucumber.runtime.RuntimeOptions;

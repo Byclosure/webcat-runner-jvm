@@ -1,6 +1,4 @@
-package cucumber.examples.java.calculator;
-
-import static cucumber.examples.java.calculator.EnvironmentConfig.Config;
+package com.byclosure.webcat;
 
 import cucumber.runtime.ParameterInfo;
 import cucumber.runtime.StepDefinition;
@@ -12,7 +10,6 @@ import gherkin.formatter.Formatter;
 import gherkin.formatter.NiceAppendable;
 import gherkin.formatter.Reporter;
 import gherkin.formatter.model.*;
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
@@ -311,7 +308,7 @@ public class WebcatReporter implements Reporter, Formatter {
         public List<StepDefinitionContainer> stepDefinitions;
         public List<StepDefinitionMatchContainer> stepDefinitionMatches;
         public List<Map<String, Object>> features;
-        public Map<Config, String> environment;
+        public Map<EnvironmentConfig.Config, String> environment;
     }
 
     /**

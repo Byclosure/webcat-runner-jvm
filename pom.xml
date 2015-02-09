@@ -1,53 +1,40 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!--parent>
-        <groupId>info.cukes</groupId>
-        <artifactId>cucumber-jvm</artifactId>
-        <relativePath>../../pom.xml</relativePath>
-        <version>1.2.1-SNAPSHOT</version>
-    </parent-->
-
-    <groupId>info.cukes</groupId>
-    <artifactId>java-calculator</artifactId>
+    <groupId>com.byclosure</groupId>
+    <artifactId>webcat-runner-jvm</artifactId>
     <packaging>jar</packaging>
-    <version>1.2.1-SNAPSHOT</version>
-    <name>Examples: Java Calculator</name>
+    <version>1.0.0</version>
+    <name>Webcat Runner JVM</name>
 
     <dependencies>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>4.3.6</version>
-            <!--exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions-->
         </dependency>
         <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-jvm-deps</artifactId>
-            <scope>test</scope>
+            <!--<scope>test</scope>-->
             <version>LATEST</version>
         </dependency>
         <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-java</artifactId>
-            <scope>test</scope>
+            <!--<scope>test</scope>-->
             <version>LATEST</version>
         </dependency>
         <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-junit</artifactId>
-            <scope>test</scope>
+            <!--<scope>test</scope>-->
             <version>LATEST</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <scope>test</scope>
+            <!--<scope>test</scope>-->
             <version>LATEST</version>
         </dependency>
     </dependencies>

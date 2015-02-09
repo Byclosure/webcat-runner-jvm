@@ -1,6 +1,4 @@
-package cucumber.examples.java.calculator;
-
-import static cucumber.examples.java.calculator.EnvironmentConfig.Config;
+package com.byclosure.webcat;
 
 import cucumber.api.CucumberOptions;
 import cucumber.runtime.*;
@@ -34,7 +32,7 @@ import java.util.*;
  *
  * @see CucumberOptions
  */
-public class JUnitWebcatDefinitionRunner extends ParentRunner<FeatureRunner> {
+public class WebcatRunner extends ParentRunner<FeatureRunner> {
     private final JUnitReporter jUnitReporter;
     private final List<FeatureRunner> children = new ArrayList<FeatureRunner>();
     private final Runtime runtime;
@@ -46,7 +44,7 @@ public class JUnitWebcatDefinitionRunner extends ParentRunner<FeatureRunner> {
      * @throws java.io.IOException                         if there is a problem
      * @throws org.junit.runners.model.InitializationError if there is another problem
      */
-    public JUnitWebcatDefinitionRunner(Class clazz) throws InitializationError, IOException {
+    public WebcatRunner(Class clazz) throws InitializationError, IOException {
         super(clazz);
 
         final EnvironmentConfig envConfiguration = new EnvironmentConfig();

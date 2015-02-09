@@ -1,4 +1,4 @@
-package cucumber.examples.java.calculator;
+package com.byclosure.webcat;
 
 import gherkin.deps.com.google.gson.GsonBuilder;
 import org.junit.runners.model.InitializationError;

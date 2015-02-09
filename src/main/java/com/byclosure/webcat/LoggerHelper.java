@@ -1,4 +1,4 @@
-package cucumber.examples.java.calculator;
+package com.byclosure.webcat;
 
 import java.util.ArrayList;
 import java.util.List;
