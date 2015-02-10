@@ -1,9 +1,7 @@
 package com.byclosure.webcat;
 
-import com.byclosure.webcat.WebcatRunner;
-import org.junit.runner.RunWith;
-
 import cucumber.api.CucumberOptions;
+import org.junit.runner.RunWith;
 
 @RunWith(WebcatRunner.class)
 @CucumberOptions(

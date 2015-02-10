@@ -208,6 +208,7 @@ public class WebcatReporter implements Reporter, Formatter {
 
         final HttpClient httpclient = HttpClients.createDefault();
         final HttpPost httppost = new HttpPost(config.getHost());
+        httppost.setHeader("Content-Type", "application/json");
 
         final String reportJSON = gson().toJson(output);
         try {

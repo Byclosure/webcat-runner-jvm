@@ -16,25 +16,21 @@
         <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-jvm-deps</artifactId>
-            <!--<scope>test</scope>-->
             <version>LATEST</version>
         </dependency>
         <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-java</artifactId>
-            <!--<scope>test</scope>-->
             <version>LATEST</version>
         </dependency>
         <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-junit</artifactId>
-            <!--<scope>test</scope>-->
             <version>LATEST</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <!--<scope>test</scope>-->
             <version>LATEST</version>
         </dependency>
     </dependencies>
