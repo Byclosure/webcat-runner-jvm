@@ -1,5 +1,8 @@
 package com.byclosure.webcat;
 
+import com.byclosure.webcat.helpers.LoggerHelper;
+import com.byclosure.webcat.reporter.StepDefinitionCollector;
+import com.byclosure.webcat.reporter.WebcatReporter;
 import cucumber.api.CucumberOptions;
 import cucumber.runtime.*;
 import cucumber.runtime.Runtime;
@@ -8,7 +11,6 @@ import cucumber.runtime.junit.Assertions;
 import cucumber.runtime.junit.FeatureRunner;
 import cucumber.runtime.junit.JUnitReporter;
 import cucumber.runtime.model.CucumberFeature;
-import gherkin.deps.com.google.gson.GsonBuilder;
 import gherkin.formatter.Formatter;
 import gherkin.formatter.Reporter;
 import org.junit.runner.Description;
@@ -73,12 +75,19 @@ public class WebcatRunner extends ParentRunner<FeatureRunner> {
         Reporter reporter = runtimeOptions.reporter(classLoader);
         
         
-        final StepDefinitionCollector stepDefinitionCollector = new StepDefinitionCollector();        
+        final StepDefinitionCollector stepDefinitionCollector = new StepDefinitionCollector();
         
         glue.reportStepDefinitions(stepDefinitionCollector);
         
-        final Appendable outWebcatReporter = new UTF8OutputStreamWriter(new URLOutputStream(Utils.toURL("target/webcat-report.json")));
+        final Appendable outWebcatReporter;
+
+        if(envConfiguration.isDebug()) {
+            outWebcatReporter = new UTF8OutputStreamWriter(new URLOutputStream(Utils.toURL("target/webcat-report.json")));
+        } else {
+            outWebcatReporter = null;
+        }
         final WebcatReporter webcatReporter = new WebcatReporter(outWebcatReporter, envConfiguration, stepDefinitionCollector.getStepDefinitions());
+
         runtimeOptions.addPlugin(webcatReporter);
 
         final List<CucumberFeature> cucumberFeatures = runtimeOptions.cucumberFeatures(resourceLoader);

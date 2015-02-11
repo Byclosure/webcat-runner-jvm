@@ -1,5 +1,6 @@
 package com.byclosure.webcat;
 
+import com.byclosure.webcat.helpers.LoggerHelper;
 import gherkin.deps.com.google.gson.GsonBuilder;
 import org.junit.runners.model.InitializationError;
 
@@ -45,8 +46,8 @@ public class EnvironmentConfig {
         }
 
         //replace with env vars
-        for(Config config : Config.values()) {
-            final String envValue = System.getenv(config.getVar());
+            for(Config config : Config.values()) {
+                final String envValue = System.getenv(config.getVar());
             if(envValue != null) {
                 configMap.put(config, envValue);
             }
@@ -60,11 +61,12 @@ public class EnvironmentConfig {
             configMap.put(Config.INTENT, DEFAULT_INTENT);
         }
 
-        //WEBCAT_PROJECT_TOKEN and WEBCAT_PROJECT are required
+        //GIT_COMMIT, WEBCAT_PROJECT_TOKEN and WEBCAT_PROJECT are required
         if(shouldPublishResults() &&
                 !(configMap.containsKey(Config.PROJECT_TOKEN) &&
-                        configMap.containsKey(Config.PROJECT))) {
-            throw new InitializationError("WEBCAT_PROJECT and WEBCAT_PROJECT_TOKEN must be set.");
+                        configMap.containsKey(Config.PROJECT) &&
+                        configMap.containsKey(Config.COMMIT_ID))) {
+            throw new InitializationError("GIT_COMMIT, WEBCAT_PROJECT and WEBCAT_PROJECT_TOKEN must be set.");
         }
     }
 
@@ -140,7 +142,7 @@ public class EnvironmentConfig {
         return features;
     }
 
-    enum Config {
+    public enum Config {
         PROJECT_TOKEN("WEBCAT_PROJECT_TOKEN"),
         USER_TOKEN("WEBCAT_USER_TOKEN"),
         HOST("WEBCAT_HOST"),
@@ -151,7 +153,8 @@ public class EnvironmentConfig {
         CI_TRAVIS("TRAVIS_JOB_NUMBER"),
         CI_BAMBOO("bamboo.buildNumber"),
         CI_CODESHIP("CI_BUILD_NUMBER"),
-        DEBUG("WEBCAT_DEBUG")
+        DEBUG("WEBCAT_DEBUG"),
+        COMMIT_ID("GIT_COMMIT")
         ;
 
         private final String var;

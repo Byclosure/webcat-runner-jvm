@@ -1,4 +1,4 @@
-package com.byclosure.webcat;
+package com.byclosure.webcat.reporter;
 
 import java.util.ArrayList;
 import java.util.List;
