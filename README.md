@@ -16,8 +16,8 @@ To install this library, add the following to your `pom.xml`.
 ```
 
 #Usage#
-The Webcat runner is based on the Cucumber-JVM Junit runner. Refer to
-[their documentation](https://github.com/cucumber/cucumber-jvm) on how to write and run Features.
+The Webcat runner is based on the Cucumber-JVM Junit runner. Refer to the
+[Cucumber-JVM project](https://github.com/cucumber/cucumber-jvm) on how to write and run Features using this library.
 
 To use the Webcat runner, do the following:
 
