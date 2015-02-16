@@ -8,6 +8,16 @@ import java.util.List;
 public class Context implements IContext {
     private List<String> screenshots = new ArrayList<String>();
 
+    private static Context instance;
+
+    public static Context getInstance() {
+        if(instance == null) {
+            instance = new Context();
+        }
+
+        return instance;
+    }
+
     @Override
     public void clearScreenshots() {
         screenshots.clear();

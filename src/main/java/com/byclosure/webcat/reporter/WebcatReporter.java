@@ -1,6 +1,7 @@
 package com.byclosure.webcat.reporter;
 
 import com.byclosure.webcat.EnvironmentConfig;
+import com.byclosure.webcat.context.Context;
 import com.byclosure.webcat.helpers.LoggerHelper;
 import cucumber.runtime.ParameterInfo;
 import cucumber.runtime.StepDefinition;
@@ -15,11 +16,14 @@ import gherkin.formatter.model.*;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClients;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -132,8 +136,10 @@ public class WebcatReporter implements Reporter, Formatter {
     @Override
     public void result(Result result) {
         getCurrentStep(Phase.result).put("result", result.toMap());
-//        getCurrentStep(Phase.result).put("screenshots", new ArrayList<String>(context.getScreenshots()));
-//        context.clearScreenshots();
+
+        final Context context = Context.getInstance();
+        getCurrentStep(Phase.result).put("screenshots", new ArrayList<String>(context.getScreenshots()));
+        context.clearScreenshots();
     }
 
     @Override
@@ -208,19 +214,16 @@ public class WebcatReporter implements Reporter, Formatter {
     }
 
     private void sendResult(Report output) {
-        logger.log(Level.FINE, "Sending results to " + config.getHost());
+        logger.log(Level.INFO, "Sending results to " + config.getHost());
 
         final HttpClient httpclient = HttpClients.createDefault();
         final HttpPost httppost = new HttpPost(config.getHost());
         httppost.setHeader("Content-Type", "application/json");
+        httppost.setHeader("Accept-Charset", "utf-8");
 
         final String reportJSON = gson().toJson(output);
-        try {
-            httppost.setEntity(new StringEntity(reportJSON));
-        } catch (UnsupportedEncodingException e) {
-            logger.log(Level.SEVERE, "Could not send report to Webcat: " + e.getMessage());
-            return;
-        }
+        final StringEntity reportStringEntity = new StringEntity(reportJSON, StandardCharsets.UTF_8);
+        httppost.setEntity(reportStringEntity);
 
         final HttpResponse response;
 
