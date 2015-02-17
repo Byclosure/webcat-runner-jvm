@@ -4,7 +4,7 @@ and a reporter that sends run reports to the [Webcat](http://www.webcat.byclosur
 
 This library is part of the [Webcat Project](http://www.webcat.byclosure.com/).
 
-#Instalation#
+#Installation#
 To install this library, add the following to your `pom.xml`.
 
 ```
