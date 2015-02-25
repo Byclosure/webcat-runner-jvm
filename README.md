@@ -11,7 +11,7 @@ To install this library, add the following to your `pom.xml`.
 <dependency>
     <groupId>com.byclosure.webcat</groupId>
     <artifactId>webcat-runner-jvm</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
@@ -22,11 +22,10 @@ The Webcat runner is based on the Cucumber-JVM Junit runner. Refer to the
 To use the Webcat runner, do the following:
 
 1. Create a Junit Runner
-
     ```java
     @RunWith(WebcatRunner.class)
     @CucumberOptions(format = {"pretty", "junit:target/junit-report.xml"},
-        monochrome = true)
+            monochrome = true)
     public class FeatureRunnerTest {
     }
     ```

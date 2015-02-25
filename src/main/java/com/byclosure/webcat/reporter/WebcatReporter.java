@@ -135,10 +135,11 @@ public class WebcatReporter implements Reporter, Formatter {
 
     @Override
     public void result(Result result) {
-        getCurrentStep(Phase.result).put("result", result.toMap());
+        final Map currentStep = getCurrentStep(Phase.result);
+        currentStep.put("result", result.toMap());
 
         final Context context = Context.getInstance();
-        getCurrentStep(Phase.result).put("screenshots", new ArrayList<String>(context.getScreenshots()));
+        currentStep.put("screenshots", new ArrayList<String>(context.getScreenshots()));
         context.clearScreenshots();
     }
 

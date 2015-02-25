@@ -4,7 +4,7 @@
     <groupId>com.byclosure.webcat</groupId>
     <artifactId>webcat-runner-jvm</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <name>Webcat Runner JVM</name>
     <description>A runner and reporter to integrate with the Webcat project.</description>
