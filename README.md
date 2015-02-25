@@ -22,13 +22,13 @@ The Webcat runner is based on the Cucumber-JVM Junit runner. Refer to the
 To use the Webcat runner, do the following:
 
 1. Create a Junit Runner
-    ```java
-    @RunWith(WebcatRunner.class)
-    @CucumberOptions(format = {"pretty", "junit:target/junit-report.xml"},
-            monochrome = true)
-    public class FeatureRunnerTest {
-    }
-    ```
+```java
+@RunWith(WebcatRunner.class)
+@CucumberOptions(format = {"pretty", "junit:target/junit-report.xml"},
+        monochrome = true)
+public class FeatureRunnerTest {
+}
+```
 2. Write your features and step implementations
 3. Run the Features with
 ```
